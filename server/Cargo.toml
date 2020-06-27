@@ -1,5 +1,5 @@
 [package]
-name = "hello-rocket"
+name = "web-rs"
 version = "0.1.0"
 authors = ["Christopher Michael Sutton <christopher.sutton12@gmail.com>"]
 edition = "2018"
