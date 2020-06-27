@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("copy-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
   entry: "./ui/index.ts",
@@ -8,8 +8,8 @@ module.exports = {
   devServer: { contentBase: "./dist" },
   mode: "development",
   plugins: [
+    new HtmlWebpackPlugin({ title: "Omni" }),
     new CleanWebpackPlugin({ cleanStaleWebpackAssests: false }),
-    new HtmlWebpackPlugin({ title: "development" }),
   ],
   module: {
     rules: [
@@ -23,8 +23,15 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
+  },
   output: {
-    filename: "bundle.js",
+    filename: "[name].js",
+    sourceMapFilename: "[file].map",
     path: path.resolve(__dirname, "dist"),
+    publicPath: "/",
   },
 };
