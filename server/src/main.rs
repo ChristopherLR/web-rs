@@ -2,21 +2,10 @@
 #[macro_use]
 extern crate rocket;
 
-use std::io;
-use std::path::{Path, PathBuf};
-
-use rocket::response::NamedFile;
-
-#[get("/")]
-fn index() -> io::Result<NamedFile> {
-    NamedFile::open("./build/index.html")
-}
-
-#[get("/<file..>")]
-fn files(file: PathBuf) -> Option<NamedFile> {
-    NamedFile::open(Path::new("./build").join(file)).ok()
-}
+mod web;
 
 fn main() {
-    rocket::ignite().mount("/", routes![index, files]).launch();
+    rocket::ignite()
+        .mount("/", routes![web::index, web::files])
+        .launch();
 }
