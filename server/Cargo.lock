@@ -1086,6 +1086,7 @@ name = "web-rs"
 version = "0.1.0"
 dependencies = [
  "env_logger",
+ "lazy_static",
  "log 0.4.8",
  "notify",
  "rocket",

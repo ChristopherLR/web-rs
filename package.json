@@ -7,7 +7,7 @@
     "build-server": "cargo install --path server",
     "build-ui": "webpack",
     "watch": "webpack --watch",
-    "dev": "node ui/dev-server.js"
+    "dev": "webpack --watch& cd server && RUST_LOG=info cargo run server"
   },
   "keywords": [],
   "author": "",
